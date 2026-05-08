@@ -1,0 +1,29 @@
+aid: reown
+url: https://raw.githubusercontent.com/api-evangelist/reown/refs/heads/main/apis.yml
+name: Reown
+x-type: company
+description: >-
+  Reown (formerly WalletConnect) provides AppKit (wallet connection SDK), WalletKit (wallet vendor SDK), Smart Sessions, and WalletGuide. Backbone of cross-wallet UX in Web3.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Web3
+  - Wallet
+  - WalletConnect
+  - SDK
+  - UX
+created: '2026-05-08'
+modified: '2026-05-08'
+specificationVersion: '0.19'
+apis: []
+common:
+  - type: Website
+    url: https://reown.com/
+  - type: Plans
+    url: plans/reown-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/reown-rate-limits.yml
+  - type: FinOps
+    url: finops/reown-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
