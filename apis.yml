@@ -2,28 +2,81 @@ aid: reown
 url: https://raw.githubusercontent.com/api-evangelist/reown/refs/heads/main/apis.yml
 name: Reown
 x-type: company
-description: >-
-  Reown (formerly WalletConnect) provides AppKit (wallet connection SDK), WalletKit (wallet vendor SDK), Smart Sessions, and WalletGuide. Backbone of cross-wallet UX in Web3.
+description: Reown (formerly WalletConnect) provides Web3 connection infrastructure
+  including AppKit (login + wallet integration UX), WalletConnect SDK (wallet-side),
+  the Reown Cloud Explorer API (dApp/wallet directory), Push Notifications, and Multi-chain
+  RPC. The WalletConnect protocol itself is SDK-mediated; Reown also exposes REST
+  APIs for the Cloud Explorer.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Web3
-  - Wallet
-  - WalletConnect
-  - SDK
-  - UX
+- Web3
+- Wallets
+- WalletConnect
+- AppKit
+- RPC
 created: '2026-05-08'
 modified: '2026-05-08'
 specificationVersion: '0.19'
-apis: []
+apis:
+- aid: reown:explorer-api
+  name: Reown Cloud Explorer API
+  description: REST API to retrieve listings of WalletGuide-approved wallets, dApps,
+    hybrid entries, and chains, plus logo assets. Filter by chain, platform, SDK,
+    standard, or search term.
+  humanURL: https://docs.reown.com/cloud/explorer
+  baseURL: https://api.web3modal.org/v3
+  tags:
+  - REST
+  - Directory
+  properties:
+  - type: Documentation
+    url: https://docs.reown.com/cloud/explorer
+- aid: reown:notify-api
+  name: Reown Notify (Push) API
+  description: REST API for sending wallet push notifications via the Reown Notify
+    protocol, plus subject/topic management.
+  humanURL: https://docs.reown.com/cloud/notify-api
+  baseURL: https://notify.walletconnect.com
+  tags:
+  - REST
+  - Push
+  properties:
+  - type: Documentation
+    url: https://docs.reown.com/cloud/notify-api
+- aid: reown:blockchain-api
+  name: Reown Blockchain API
+  description: Multi-chain JSON-RPC over HTTPS used by AppKit and partners; provides
+    on-chain reads, gas, swaps, and onramp helpers.
+  humanURL: https://docs.reown.com/cloud/blockchain-api
+  baseURL: https://rpc.walletconnect.com/v1
+  tags:
+  - JSON-RPC
+  - Multi-chain
+  properties:
+  - type: Documentation
+    url: https://docs.reown.com/cloud/blockchain-api
+- aid: reown:walletconnect-protocol
+  name: WalletConnect Relay (SDK-mediated)
+  description: WalletConnect v2 relay network for end-to-end encrypted JSON-RPC pairing
+    between dApps and wallets. Accessed through SDK clients only; not a direct REST
+    surface.
+  humanURL: https://docs.reown.com/walletkit/overview
+  baseURL: wss://relay.walletconnect.com
+  tags:
+  - WebSocket
+  - Relay
+  properties:
+  - type: Documentation
+    url: https://docs.reown.com/walletkit/overview
 common:
-  - type: Website
-    url: https://reown.com/
-  - type: Plans
-    url: plans/reown-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/reown-rate-limits.yml
-  - type: FinOps
-    url: finops/reown-finops.yml
+- type: Website
+  url: https://reown.com/
+- type: Plans
+  url: plans/reown-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/reown-rate-limits.yml
+- type: FinOps
+  url: finops/reown-finops.yml
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com

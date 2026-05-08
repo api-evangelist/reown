@@ -5,20 +5,20 @@ provider: Reown
 providerId: reown
 created: '2026-05-08'
 modified: '2026-05-08'
-reconciled: false
+reconciled: true
 tags:
 - Web3
-- Wallet
+- Wallets
 - WalletConnect
-- SDK
-- UX
+- AppKit
+- RPC
 - FinOps
-- Cost Management
 - FOCUS
-description: FOCUS-aligned FinOps placeholder for Reown. Pipeline will replace with real billing details.
-notes: Initial scaffold — billing model has not yet been reconciled.
+description: Reown bills as monthly subscription plus MAW-based overages on production
+  usage. Notify push messages may be metered separately.
+notes: Invoiced via Reown.
 sources:
-- https://reown.com/
+- https://reown.com/pricing
 - https://focus.finops.org/focus-specification/v1-3/
 alignedWith:
   framework: FinOps Foundation Framework
@@ -26,16 +26,15 @@ alignedWith:
   dataSpec: FOCUS
   dataSpecVersion: '1.3'
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
-publisherName: Reown
+publisherName: Reown (WalletConnect Inc.)
 serviceCategory: Web3
 billingModel:
-  pricingCategory: To Be Reconciled
+  pricingCategory: Subscription + MAW
   billingFrequency: Monthly
   billingCurrency: USD
   chargeCategories:
   - Usage
   - Purchase
-  - Adjustment
 focusColumns:
   ServiceName: Reown
   ServiceCategory: Web3
@@ -45,22 +44,34 @@ focusColumns:
   BillingCurrency: USD
   ChargeCategory: Usage
 meters:
-- name: api_usage
-  description: Catch-all meter pending reconciliation.
-  unit: varies
+- name: monthly_active_wallets
+  description: Distinct wallet sessions per month.
+  unit: wallet
+  aggregation: count_distinct
+  dimensions:
+  - project_id
+- name: notify_messages
+  description: Notify push messages sent.
+  unit: message
   aggregation: sum
   dimensions:
-  - account
-  - resource
+  - project_id
+- name: rpc_requests
+  description: Blockchain RPC requests.
+  unit: request
+  aggregation: sum
+  dimensions:
+  - project_id
+  - chain
 principles:
 - name: Visibility
-  description: Pull provider invoices or usage exports until a self-serve usage feed is documented.
+  description: Reown dashboard surfaces MAW and Notify usage.
 - name: Allocation
-  description: Tag invoice line items to consuming business units in your FinOps store.
+  description: One projectId per app/environment.
 - name: Optimization
-  description: Levers depend on the provider's billing model; review at renewal once reconciled.
+  description: Use AppKit's built-in caching; avoid redundant RPC calls.
 - name: Accountability
-  description: Assign a contract owner to review billing against negotiated terms.
+  description: Project owners review usage.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

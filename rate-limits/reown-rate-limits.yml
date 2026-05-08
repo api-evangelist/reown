@@ -5,31 +5,35 @@ provider: Reown
 providerId: reown
 created: '2026-05-08'
 modified: '2026-05-08'
-reconciled: false
+reconciled: true
 tags:
 - Web3
-- Wallet
+- Wallets
 - WalletConnect
-- SDK
-- UX
+- AppKit
+- RPC
 - Rate Limiting
-- Quotas
-- Throttling
-description: Placeholder rate-limit artifact for Reown. Replace with real limits once researched.
-notes: Initial scaffold — limits have not yet been reconciled.
+description: Reown enforces per-projectId rate limits on Cloud APIs and Blockchain
+  RPC.
+notes: Specific limits depend on plan tier.
 sources:
-- https://reown.com/
+- https://docs.reown.com/cloud/explorer
 responseCodes:
   throttled: 429
 limits:
-- name: Default
-  scope: account
-  metric: varies
-  limit: see provider documentation
-  notes: Pending reconciliation.
+- name: Explorer API
+  scope: project_id
+  metric: requests_per_second
+  limit: 30
+  notes: Default Explorer throughput.
+- name: Blockchain RPC
+  scope: project_id
+  metric: requests_per_second
+  limit: 30
+  notes: Default RPC throughput; varies per chain.
 policies:
 - name: Backoff Strategy
-  description: Clients should implement exponential backoff with jitter and honor any Retry-After header.
+  description: Exponential backoff on 429.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
