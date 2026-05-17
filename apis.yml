@@ -1,7 +1,7 @@
 aid: reown
 url: https://raw.githubusercontent.com/api-evangelist/reown/refs/heads/main/apis.yml
 name: Reown
-x-type: company
+kind: company
 description: Reown (formerly WalletConnect) provides Web3 connection infrastructure
   including AppKit (login + wallet integration UX), WalletConnect SDK (wallet-side),
   the Reown Cloud Explorer API (dApp/wallet directory), Push Notifications, and Multi-chain
