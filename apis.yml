@@ -81,6 +81,8 @@ common:
     url: rate-limits/reown-rate-limits.yml
   - type: FinOps
     url: finops/reown-finops.yml
+  - type: LLMsTxt
+    url: https://docs.reown.com/llms.txt
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
