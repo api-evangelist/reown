@@ -1,0 +1,578 @@
+asyncapi: '2.6.0'
+info:
+  title: Reown / WalletConnect v2 Relay
+  version: '2.0'
+  description: |
+    AsyncAPI description of the Reown (formerly WalletConnect) v2 Relay
+    WebSocket protocol. The relay is a JSON-RPC over WebSocket transport
+    that routes end-to-end encrypted messages between paired peers (typically
+    a dApp and a wallet) on a publish/subscribe basis.
+
+    Two layers of JSON-RPC traffic flow over the same WebSocket:
+
+      1. Relay RPC (`irn_*`): client <-> relay server methods to publish,
+         subscribe, unsubscribe, and deliver messages on opaque topics.
+      2. Sign / Pairing protocol RPC (`wc_*`): end-to-end encrypted JSON-RPC
+         messages exchanged between peers. The relay never sees plaintext;
+         payloads are carried in `irn_publish.message` / `irn_subscription.data.message`.
+
+    Pairing is bootstrapped by an out-of-band `wc:` URI (e.g. via QR code or
+    deep link) containing the pairing topic, symmetric key, supported methods,
+    relay protocol (`irn`), and optional expiry timestamp.
+  contact:
+    name: Reown
+    url: https://reown.com/
+  license:
+    name: Apache-2.0
+  tags:
+    - name: Web3
+    - name: Wallets
+    - name: WalletConnect
+    - name: Relay
+    - name: WebSocket
+
+defaultContentType: application/json
+
+servers:
+  production:
+    url: relay.walletconnect.com
+    protocol: wss
+    description: |
+      Reown / WalletConnect public relay. Clients connect with a project ID
+      issued via Reown Cloud and (for authenticated sessions) a signed JWT.
+    variables:
+      projectId:
+        description: Project ID from cloud.reown.com.
+        default: YOUR_PROJECT_ID
+    bindings:
+      ws:
+        query:
+          type: object
+          properties:
+            projectId:
+              type: string
+              description: Reown Cloud project identifier (required).
+            auth:
+              type: string
+              description: |
+                Optional client-signed JWT (Ed25519) identifying the client.
+            ua:
+              type: string
+              description: |
+                Optional user-agent string of the form `<protocol>-<sdk>-<version>`.
+
+channels:
+  /:
+    description: |
+      The single WebSocket endpoint over which all relay JSON-RPC messages
+      flow. Each direction is a stream of JSON-RPC 2.0 frames; correlation
+      uses the standard JSON-RPC `id` field.
+    publish:
+      operationId: clientToRelay
+      summary: Messages sent from client (dApp or wallet) to the relay.
+      message:
+        oneOf:
+          - $ref: '#/components/messages/IrnPublishRequest'
+          - $ref: '#/components/messages/IrnSubscribeRequest'
+          - $ref: '#/components/messages/IrnUnsubscribeRequest'
+          - $ref: '#/components/messages/IrnBatchSubscribeRequest'
+          - $ref: '#/components/messages/IrnBatchUnsubscribeRequest'
+          - $ref: '#/components/messages/IrnSubscriptionResponse'
+    subscribe:
+      operationId: relayToClient
+      summary: Messages delivered from the relay to a client.
+      message:
+        oneOf:
+          - $ref: '#/components/messages/IrnSubscriptionRequest'
+          - $ref: '#/components/messages/IrnPublishResponse'
+          - $ref: '#/components/messages/IrnSubscribeResponse'
+          - $ref: '#/components/messages/IrnUnsubscribeResponse'
+          - $ref: '#/components/messages/IrnBatchSubscribeResponse'
+          - $ref: '#/components/messages/IrnBatchUnsubscribeResponse'
+
+components:
+  messages:
+
+    IrnPublishRequest:
+      name: irn_publish
+      title: irn_publish (request)
+      summary: Publish an encrypted message to a topic.
+      payload:
+        $ref: '#/components/schemas/IrnPublishRequest'
+
+    IrnPublishResponse:
+      name: irn_publish_response
+      title: irn_publish (response)
+      payload:
+        $ref: '#/components/schemas/BooleanResponse'
+
+    IrnSubscribeRequest:
+      name: irn_subscribe
+      title: irn_subscribe (request)
+      summary: Subscribe to a single topic; returns a subscriptionId.
+      payload:
+        $ref: '#/components/schemas/IrnSubscribeRequest'
+
+    IrnSubscribeResponse:
+      name: irn_subscribe_response
+      title: irn_subscribe (response)
+      payload:
+        $ref: '#/components/schemas/SubscriptionIdResponse'
+
+    IrnUnsubscribeRequest:
+      name: irn_unsubscribe
+      title: irn_unsubscribe (request)
+      summary: Unsubscribe a previous subscription on a topic.
+      payload:
+        $ref: '#/components/schemas/IrnUnsubscribeRequest'
+
+    IrnUnsubscribeResponse:
+      name: irn_unsubscribe_response
+      title: irn_unsubscribe (response)
+      payload:
+        $ref: '#/components/schemas/BooleanResponse'
+
+    IrnBatchSubscribeRequest:
+      name: irn_batchSubscribe
+      title: irn_batchSubscribe (request)
+      summary: Subscribe to many topics in one call.
+      payload:
+        $ref: '#/components/schemas/IrnBatchSubscribeRequest'
+
+    IrnBatchSubscribeResponse:
+      name: irn_batchSubscribe_response
+      title: irn_batchSubscribe (response)
+      payload:
+        $ref: '#/components/schemas/SubscriptionIdsResponse'
+
+    IrnBatchUnsubscribeRequest:
+      name: irn_batchUnsubscribe
+      title: irn_batchUnsubscribe (request)
+      summary: Unsubscribe many (topic, subscriptionId) pairs at once.
+      payload:
+        $ref: '#/components/schemas/IrnBatchUnsubscribeRequest'
+
+    IrnBatchUnsubscribeResponse:
+      name: irn_batchUnsubscribe_response
+      title: irn_batchUnsubscribe (response)
+      payload:
+        $ref: '#/components/schemas/BooleanResponse'
+
+    IrnSubscriptionRequest:
+      name: irn_subscription
+      title: irn_subscription (server push)
+      summary: |
+        Server-initiated delivery of a published message to a subscribed
+        client. The `data.message` payload is an encrypted envelope whose
+        plaintext, once decrypted with the pairing/session symmetric key, is
+        a JSON-RPC 2.0 frame using one of the `wc_*` methods below.
+      payload:
+        $ref: '#/components/schemas/IrnSubscriptionRequest'
+
+    IrnSubscriptionResponse:
+      name: irn_subscription_response
+      title: irn_subscription (ack)
+      summary: Client acknowledgement that the pushed message was received.
+      payload:
+        $ref: '#/components/schemas/BooleanResponse'
+
+  schemas:
+
+    JsonRpcId:
+      type: integer
+      format: int64
+      description: JSON-RPC 2.0 correlation id.
+
+    JsonRpcVersion:
+      type: string
+      enum: ['2.0']
+
+    IrnPublishRequest:
+      type: object
+      required: [id, jsonrpc, method, params]
+      properties:
+        id: { $ref: '#/components/schemas/JsonRpcId' }
+        jsonrpc: { $ref: '#/components/schemas/JsonRpcVersion' }
+        method:
+          type: string
+          enum: [irn_publish]
+        params:
+          type: object
+          required: [topic, message, ttl, tag]
+          properties:
+            topic:
+              type: string
+              description: Hex-encoded topic identifier.
+            message:
+              type: string
+              description: Encrypted envelope (UTF-8 / base64) carrying a wc_* payload.
+            attestation:
+              type: string
+              description: Optional client attestation string.
+            ttl:
+              type: integer
+              description: Time-to-live in seconds.
+            tag:
+              type: integer
+              description: |
+                Protocol message tag (e.g. 1100 = wc_sessionPropose request,
+                1101 = wc_sessionPropose response, 1108 = wc_sessionRequest,
+                etc.). Tags are defined per `wc_*` method in the Reown specs.
+            prompt:
+              type: boolean
+              description: Whether the recipient should be prompted via push.
+
+    IrnSubscribeRequest:
+      type: object
+      required: [id, jsonrpc, method, params]
+      properties:
+        id: { $ref: '#/components/schemas/JsonRpcId' }
+        jsonrpc: { $ref: '#/components/schemas/JsonRpcVersion' }
+        method:
+          type: string
+          enum: [irn_subscribe]
+        params:
+          type: object
+          required: [topic]
+          properties:
+            topic:
+              type: string
+
+    IrnUnsubscribeRequest:
+      type: object
+      required: [id, jsonrpc, method, params]
+      properties:
+        id: { $ref: '#/components/schemas/JsonRpcId' }
+        jsonrpc: { $ref: '#/components/schemas/JsonRpcVersion' }
+        method:
+          type: string
+          enum: [irn_unsubscribe]
+        params:
+          type: object
+          required: [topic, id]
+          properties:
+            topic:
+              type: string
+            id:
+              type: string
+              description: Subscription id previously returned by irn_subscribe.
+
+    IrnBatchSubscribeRequest:
+      type: object
+      required: [id, jsonrpc, method, params]
+      properties:
+        id: { $ref: '#/components/schemas/JsonRpcId' }
+        jsonrpc: { $ref: '#/components/schemas/JsonRpcVersion' }
+        method:
+          type: string
+          enum: [irn_batchSubscribe]
+        params:
+          type: object
+          required: [topics]
+          properties:
+            topics:
+              type: array
+              items: { type: string }
+
+    IrnBatchUnsubscribeRequest:
+      type: object
+      required: [id, jsonrpc, method, params]
+      properties:
+        id: { $ref: '#/components/schemas/JsonRpcId' }
+        jsonrpc: { $ref: '#/components/schemas/JsonRpcVersion' }
+        method:
+          type: string
+          enum: [irn_batchUnsubscribe]
+        params:
+          type: object
+          required: [subscriptions]
+          properties:
+            subscriptions:
+              type: array
+              items:
+                type: object
+                required: [topic, id]
+                properties:
+                  topic: { type: string }
+                  id:    { type: string }
+
+    IrnSubscriptionRequest:
+      type: object
+      required: [id, jsonrpc, method, params]
+      properties:
+        id: { $ref: '#/components/schemas/JsonRpcId' }
+        jsonrpc: { $ref: '#/components/schemas/JsonRpcVersion' }
+        method:
+          type: string
+          enum: [irn_subscription]
+        params:
+          type: object
+          required: [id, data]
+          properties:
+            id:
+              type: string
+              description: Subscription id this message is being delivered for.
+            data:
+              type: object
+              required: [topic, message]
+              properties:
+                topic:       { type: string }
+                message:     { type: string, description: Encrypted wc_* envelope. }
+                attestation: { type: string }
+                publishedAt: { type: integer, description: Unix ms timestamp. }
+                tag:         { type: integer }
+
+    BooleanResponse:
+      type: object
+      required: [id, jsonrpc, result]
+      properties:
+        id: { $ref: '#/components/schemas/JsonRpcId' }
+        jsonrpc: { $ref: '#/components/schemas/JsonRpcVersion' }
+        result:
+          type: boolean
+
+    SubscriptionIdResponse:
+      type: object
+      required: [id, jsonrpc, result]
+      properties:
+        id: { $ref: '#/components/schemas/JsonRpcId' }
+        jsonrpc: { $ref: '#/components/schemas/JsonRpcVersion' }
+        result:
+          type: string
+          description: Newly issued subscription identifier.
+
+    SubscriptionIdsResponse:
+      type: object
+      required: [id, jsonrpc, result]
+      properties:
+        id: { $ref: '#/components/schemas/JsonRpcId' }
+        jsonrpc: { $ref: '#/components/schemas/JsonRpcVersion' }
+        result:
+          type: array
+          items: { type: string }
+
+    # --------------------------------------------------------------------
+    # Inner WalletConnect protocol payloads (wc_*) carried inside the
+    # encrypted `message` field of irn_publish / irn_subscription. The relay
+    # itself never inspects these; they are documented here for completeness.
+    # --------------------------------------------------------------------
+
+    WcSessionPropose:
+      type: object
+      description: |
+        wc_sessionPropose — sent by the dApp (proposer) on the pairing topic
+        (Topic A) to request a session. The wallet (responder) replies with
+        its public key and chosen relay; both peers then derive Topic B.
+      required: [id, jsonrpc, method, params]
+      properties:
+        id: { $ref: '#/components/schemas/JsonRpcId' }
+        jsonrpc: { $ref: '#/components/schemas/JsonRpcVersion' }
+        method: { type: string, enum: [wc_sessionPropose] }
+        params:
+          type: object
+          properties:
+            relays:
+              type: array
+              items:
+                type: object
+                properties:
+                  protocol: { type: string, example: irn }
+                  data:     { type: string }
+            proposer:
+              type: object
+              properties:
+                publicKey: { type: string }
+                metadata:  { $ref: '#/components/schemas/AppMetadata' }
+            requiredNamespaces:
+              type: object
+              additionalProperties: { $ref: '#/components/schemas/Namespace' }
+            optionalNamespaces:
+              type: object
+              additionalProperties: { $ref: '#/components/schemas/Namespace' }
+            sessionProperties:
+              type: object
+              additionalProperties: { type: string }
+            expiryTimestamp:
+              type: integer
+
+    WcSessionSettle:
+      type: object
+      description: |
+        wc_sessionSettle — sent by the responder on Topic B to finalize the
+        session with agreed namespaces, accounts, methods, events and expiry.
+      required: [id, jsonrpc, method, params]
+      properties:
+        id: { $ref: '#/components/schemas/JsonRpcId' }
+        jsonrpc: { $ref: '#/components/schemas/JsonRpcVersion' }
+        method: { type: string, enum: [wc_sessionSettle] }
+        params:
+          type: object
+          properties:
+            relay:
+              type: object
+              properties:
+                protocol: { type: string }
+                data:     { type: string }
+            controller:
+              type: object
+              properties:
+                publicKey: { type: string }
+                metadata:  { $ref: '#/components/schemas/AppMetadata' }
+            namespaces:
+              type: object
+              additionalProperties: { $ref: '#/components/schemas/SettledNamespace' }
+            sessionProperties:
+              type: object
+              additionalProperties: { type: string }
+            expiry:
+              type: integer
+
+    WcSessionUpdate:
+      type: object
+      description: wc_sessionUpdate — updates the agreed namespaces of an active session.
+      properties:
+        method: { type: string, enum: [wc_sessionUpdate] }
+        params:
+          type: object
+          properties:
+            namespaces:
+              type: object
+              additionalProperties: { $ref: '#/components/schemas/SettledNamespace' }
+
+    WcSessionExtend:
+      type: object
+      description: wc_sessionExtend — pushes the session expiry forward.
+      properties:
+        method: { type: string, enum: [wc_sessionExtend] }
+        params:
+          type: object
+          properties:
+            expiry: { type: integer }
+
+    WcSessionRequest:
+      type: object
+      description: |
+        wc_sessionRequest — dApp asks the wallet to execute a JSON-RPC method
+        scoped to a CAIP-2 chain (e.g. eth_sendTransaction on eip155:1).
+      properties:
+        method: { type: string, enum: [wc_sessionRequest] }
+        params:
+          type: object
+          properties:
+            request:
+              type: object
+              properties:
+                method: { type: string }
+                params: {}
+                expiryTimestamp: { type: integer }
+            chainId: { type: string, description: CAIP-2 chain identifier. }
+
+    WcSessionEvent:
+      type: object
+      description: wc_sessionEvent — peer-emitted event (e.g. chainChanged, accountsChanged).
+      properties:
+        method: { type: string, enum: [wc_sessionEvent] }
+        params:
+          type: object
+          properties:
+            event:
+              type: object
+              properties:
+                name: { type: string }
+                data: {}
+            chainId: { type: string }
+
+    WcSessionPing:
+      type: object
+      description: wc_sessionPing — liveness probe with a 30s timeout.
+      properties:
+        method: { type: string, enum: [wc_sessionPing] }
+        params:
+          type: object
+
+    WcSessionDelete:
+      type: object
+      description: wc_sessionDelete — terminate a session.
+      properties:
+        method: { type: string, enum: [wc_sessionDelete] }
+        params:
+          type: object
+          properties:
+            code:    { type: integer }
+            message: { type: string }
+
+    WcSessionAuthenticate:
+      type: object
+      description: |
+        wc_sessionAuthenticate — request a CAIP-74 (CACAO) authentication
+        signature, optionally also settling a session.
+      properties:
+        method: { type: string, enum: [wc_sessionAuthenticate] }
+        params:
+          type: object
+          properties:
+            requester:
+              type: object
+              properties:
+                publicKey: { type: string }
+                metadata:  { $ref: '#/components/schemas/AppMetadata' }
+            authPayload: { type: object }
+            expiryTimestamp: { type: integer }
+
+    WcPairingPing:
+      type: object
+      description: wc_pairingPing — liveness probe on the pairing topic.
+      properties:
+        method: { type: string, enum: [wc_pairingPing] }
+        params:
+          type: object
+
+    WcPairingDelete:
+      type: object
+      description: wc_pairingDelete — close and delete a pairing.
+      properties:
+        method: { type: string, enum: [wc_pairingDelete] }
+        params:
+          type: object
+          properties:
+            code:    { type: integer }
+            message: { type: string }
+
+    AppMetadata:
+      type: object
+      properties:
+        name:        { type: string }
+        description: { type: string }
+        url:         { type: string }
+        icons:
+          type: array
+          items: { type: string }
+
+    Namespace:
+      type: object
+      properties:
+        chains:
+          type: array
+          items: { type: string, description: CAIP-2 chain id, e.g. eip155:1. }
+        methods:
+          type: array
+          items: { type: string }
+        events:
+          type: array
+          items: { type: string }
+
+    SettledNamespace:
+      type: object
+      properties:
+        accounts:
+          type: array
+          items: { type: string, description: CAIP-10 account id. }
+        methods:
+          type: array
+          items: { type: string }
+        events:
+          type: array
+          items: { type: string }
+        chains:
+          type: array
+          items: { type: string }

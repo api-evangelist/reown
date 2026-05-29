@@ -68,6 +68,8 @@ apis:
     properties:
     - type: Documentation
       url: https://docs.reown.com/walletkit/overview
+    - type: AsyncAPI
+      url: asyncapi/reown-asyncapi.yml
 common:
   - type: GitHubOrganization
     url: https://github.com/reown-com
