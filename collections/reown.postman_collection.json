@@ -1,0 +1,973 @@
+{
+  "item": [
+    {
+      "id": "54aaf07f-1741-492b-af59-95d609e005bf",
+      "name": "Listings",
+      "description": {
+        "content": "Wallet, dApp, and hybrid directory listings.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9a8f65d5-eaa8-485a-9d81-8b292eb17e65",
+          "name": "List wallets",
+          "request": {
+            "name": "List wallets",
+            "description": {
+              "content": "Returns wallet listings from the Cloud Explorer directory.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "wallets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "projectId",
+                  "value": "<string>",
+                  "description": "(Required) Reown project ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "entries",
+                  "value": "100",
+                  "description": "Number of entries per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Free-text search term."
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "Comma-separated list of listing identifiers to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "chains",
+                  "value": "<string>",
+                  "description": "Comma-separated CAIP-2 chain identifiers (e.g. eip155:1)."
+                },
+                {
+                  "disabled": false,
+                  "key": "platforms",
+                  "value": "<string>",
+                  "description": "Comma-separated platforms (e.g. ios,android,web)."
+                },
+                {
+                  "disabled": false,
+                  "key": "sdks",
+                  "value": "<string>",
+                  "description": "Comma-separated SDKs to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "standards",
+                  "value": "<string>",
+                  "description": "Comma-separated supported standards."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8b4335a6-6612-4229-b6cc-f9f522f4ca29",
+              "name": "A page of wallet listings.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "wallets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "projectId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entries",
+                      "value": "100"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "chains",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "platforms",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sdks",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "standards",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "projectId",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 9023,\n  \"listings\": {\n    \"key_0\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"slug\": \"string\",\n      \"description\": \"string\",\n      \"homepage\": \"https://DyIrxko.dhubpaXyiKG,D6hLL\",\n      \"chains\": [\n        \"string\",\n        \"string\"\n      ],\n      \"versions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"sdks\": [\n        \"string\",\n        \"string\"\n      ],\n      \"app_type\": \"string\",\n      \"image_id\": \"string\",\n      \"image_url\": {\n        \"key_0\": \"http://L.gbabxeLKT8XPn3kq.S9S+vAa3g+QF9HNmZAi.4K-wrkS32J9Fbh3ZMD\",\n        \"key_1\": \"https://ChqOwlS.vydk13\"\n      },\n      \"platforms\": [\n        \"string\",\n        \"string\"\n      ],\n      \"standards\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"key_1\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"slug\": \"string\",\n      \"description\": \"string\",\n      \"homepage\": \"https://CMyszWAZpLgwkRpF.asDm+JZyVjpyJtQEG9yP9XGHpYxAM7u\",\n      \"chains\": [\n        \"string\",\n        \"string\"\n      ],\n      \"versions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"sdks\": [\n        \"string\",\n        \"string\"\n      ],\n      \"app_type\": \"string\",\n      \"image_id\": \"string\",\n      \"image_url\": {\n        \"key_0\": \"http://NuBmtLvxMTTTefflkaJrmH.lcEt4liWLpLcUTchWemRprbNWdMT7JHCct8Mos4rRwQad6RpJyPFvfdfvcSF6WIQ4IYh7\",\n        \"key_1\": \"http://BODHSUrcXqFCGplOxPqLNYMzbYGcHdnk.uvoihq.IUk5LVlOT.ONAAMXXMwdWffqRzlFFs7\"\n      },\n      \"platforms\": [\n        \"string\",\n        \"string\"\n      ],\n      \"standards\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dfefb000-99d6-4360-838d-32fe2c7df6a3",
+          "name": "List dApps",
+          "request": {
+            "name": "List dApps",
+            "description": {
+              "content": "Returns dApp listings from the Cloud Explorer directory.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "dapps"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "projectId",
+                  "value": "<string>",
+                  "description": "(Required) Reown project ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "entries",
+                  "value": "100",
+                  "description": "Number of entries per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Free-text search term."
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "Comma-separated list of listing identifiers to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "chains",
+                  "value": "<string>",
+                  "description": "Comma-separated CAIP-2 chain identifiers (e.g. eip155:1)."
+                },
+                {
+                  "disabled": false,
+                  "key": "platforms",
+                  "value": "<string>",
+                  "description": "Comma-separated platforms (e.g. ios,android,web)."
+                },
+                {
+                  "disabled": false,
+                  "key": "sdks",
+                  "value": "<string>",
+                  "description": "Comma-separated SDKs to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "standards",
+                  "value": "<string>",
+                  "description": "Comma-separated supported standards."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c7915cb3-3627-4b2f-a7ac-1a406442ba24",
+              "name": "A page of dApp listings.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "dapps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "projectId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entries",
+                      "value": "100"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "chains",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "platforms",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sdks",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "standards",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "projectId",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 9023,\n  \"listings\": {\n    \"key_0\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"slug\": \"string\",\n      \"description\": \"string\",\n      \"homepage\": \"https://DyIrxko.dhubpaXyiKG,D6hLL\",\n      \"chains\": [\n        \"string\",\n        \"string\"\n      ],\n      \"versions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"sdks\": [\n        \"string\",\n        \"string\"\n      ],\n      \"app_type\": \"string\",\n      \"image_id\": \"string\",\n      \"image_url\": {\n        \"key_0\": \"http://L.gbabxeLKT8XPn3kq.S9S+vAa3g+QF9HNmZAi.4K-wrkS32J9Fbh3ZMD\",\n        \"key_1\": \"https://ChqOwlS.vydk13\"\n      },\n      \"platforms\": [\n        \"string\",\n        \"string\"\n      ],\n      \"standards\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"key_1\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"slug\": \"string\",\n      \"description\": \"string\",\n      \"homepage\": \"https://CMyszWAZpLgwkRpF.asDm+JZyVjpyJtQEG9yP9XGHpYxAM7u\",\n      \"chains\": [\n        \"string\",\n        \"string\"\n      ],\n      \"versions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"sdks\": [\n        \"string\",\n        \"string\"\n      ],\n      \"app_type\": \"string\",\n      \"image_id\": \"string\",\n      \"image_url\": {\n        \"key_0\": \"http://NuBmtLvxMTTTefflkaJrmH.lcEt4liWLpLcUTchWemRprbNWdMT7JHCct8Mos4rRwQad6RpJyPFvfdfvcSF6WIQ4IYh7\",\n        \"key_1\": \"http://BODHSUrcXqFCGplOxPqLNYMzbYGcHdnk.uvoihq.IUk5LVlOT.ONAAMXXMwdWffqRzlFFs7\"\n      },\n      \"platforms\": [\n        \"string\",\n        \"string\"\n      ],\n      \"standards\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e8279e58-407b-4408-b5a1-ce22eda04970",
+          "name": "List hybrid entries",
+          "request": {
+            "name": "List hybrid entries",
+            "description": {
+              "content": "Returns hybrid listings (entries that are both wallets and dApps).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "hybrid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "projectId",
+                  "value": "<string>",
+                  "description": "(Required) Reown project ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "entries",
+                  "value": "100",
+                  "description": "Number of entries per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Free-text search term."
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "Comma-separated list of listing identifiers to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "chains",
+                  "value": "<string>",
+                  "description": "Comma-separated CAIP-2 chain identifiers (e.g. eip155:1)."
+                },
+                {
+                  "disabled": false,
+                  "key": "platforms",
+                  "value": "<string>",
+                  "description": "Comma-separated platforms (e.g. ios,android,web)."
+                },
+                {
+                  "disabled": false,
+                  "key": "sdks",
+                  "value": "<string>",
+                  "description": "Comma-separated SDKs to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "standards",
+                  "value": "<string>",
+                  "description": "Comma-separated supported standards."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b7e8d7be-4272-4231-ba32-cf6d9ffa5e11",
+              "name": "A page of hybrid listings.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "hybrid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "projectId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entries",
+                      "value": "100"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "chains",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "platforms",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sdks",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "standards",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "projectId",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 9023,\n  \"listings\": {\n    \"key_0\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"slug\": \"string\",\n      \"description\": \"string\",\n      \"homepage\": \"https://DyIrxko.dhubpaXyiKG,D6hLL\",\n      \"chains\": [\n        \"string\",\n        \"string\"\n      ],\n      \"versions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"sdks\": [\n        \"string\",\n        \"string\"\n      ],\n      \"app_type\": \"string\",\n      \"image_id\": \"string\",\n      \"image_url\": {\n        \"key_0\": \"http://L.gbabxeLKT8XPn3kq.S9S+vAa3g+QF9HNmZAi.4K-wrkS32J9Fbh3ZMD\",\n        \"key_1\": \"https://ChqOwlS.vydk13\"\n      },\n      \"platforms\": [\n        \"string\",\n        \"string\"\n      ],\n      \"standards\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"key_1\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"slug\": \"string\",\n      \"description\": \"string\",\n      \"homepage\": \"https://CMyszWAZpLgwkRpF.asDm+JZyVjpyJtQEG9yP9XGHpYxAM7u\",\n      \"chains\": [\n        \"string\",\n        \"string\"\n      ],\n      \"versions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"sdks\": [\n        \"string\",\n        \"string\"\n      ],\n      \"app_type\": \"string\",\n      \"image_id\": \"string\",\n      \"image_url\": {\n        \"key_0\": \"http://NuBmtLvxMTTTefflkaJrmH.lcEt4liWLpLcUTchWemRprbNWdMT7JHCct8Mos4rRwQad6RpJyPFvfdfvcSF6WIQ4IYh7\",\n        \"key_1\": \"http://BODHSUrcXqFCGplOxPqLNYMzbYGcHdnk.uvoihq.IUk5LVlOT.ONAAMXXMwdWffqRzlFFs7\"\n      },\n      \"platforms\": [\n        \"string\",\n        \"string\"\n      ],\n      \"standards\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ecac22c1-ecd5-4836-85ee-f1c3701850c1",
+          "name": "List all entries",
+          "request": {
+            "name": "List all entries",
+            "description": {
+              "content": "Returns all entries (wallets, dApps, and hybrids) listed in the Cloud Explorer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "all"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "projectId",
+                  "value": "<string>",
+                  "description": "(Required) Reown project ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "entries",
+                  "value": "100",
+                  "description": "Number of entries per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Free-text search term."
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "Comma-separated list of listing identifiers to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "chains",
+                  "value": "<string>",
+                  "description": "Comma-separated CAIP-2 chain identifiers (e.g. eip155:1)."
+                },
+                {
+                  "disabled": false,
+                  "key": "platforms",
+                  "value": "<string>",
+                  "description": "Comma-separated platforms (e.g. ios,android,web)."
+                },
+                {
+                  "disabled": false,
+                  "key": "sdks",
+                  "value": "<string>",
+                  "description": "Comma-separated SDKs to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "standards",
+                  "value": "<string>",
+                  "description": "Comma-separated supported standards."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6fe999ca-804f-4136-afa5-c3ce01c4f230",
+              "name": "A page of mixed listings.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "all"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "projectId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entries",
+                      "value": "100"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "chains",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "platforms",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sdks",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "standards",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "projectId",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 9023,\n  \"listings\": {\n    \"key_0\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"slug\": \"string\",\n      \"description\": \"string\",\n      \"homepage\": \"https://DyIrxko.dhubpaXyiKG,D6hLL\",\n      \"chains\": [\n        \"string\",\n        \"string\"\n      ],\n      \"versions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"sdks\": [\n        \"string\",\n        \"string\"\n      ],\n      \"app_type\": \"string\",\n      \"image_id\": \"string\",\n      \"image_url\": {\n        \"key_0\": \"http://L.gbabxeLKT8XPn3kq.S9S+vAa3g+QF9HNmZAi.4K-wrkS32J9Fbh3ZMD\",\n        \"key_1\": \"https://ChqOwlS.vydk13\"\n      },\n      \"platforms\": [\n        \"string\",\n        \"string\"\n      ],\n      \"standards\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"key_1\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"slug\": \"string\",\n      \"description\": \"string\",\n      \"homepage\": \"https://CMyszWAZpLgwkRpF.asDm+JZyVjpyJtQEG9yP9XGHpYxAM7u\",\n      \"chains\": [\n        \"string\",\n        \"string\"\n      ],\n      \"versions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"sdks\": [\n        \"string\",\n        \"string\"\n      ],\n      \"app_type\": \"string\",\n      \"image_id\": \"string\",\n      \"image_url\": {\n        \"key_0\": \"http://NuBmtLvxMTTTefflkaJrmH.lcEt4liWLpLcUTchWemRprbNWdMT7JHCct8Mos4rRwQad6RpJyPFvfdfvcSF6WIQ4IYh7\",\n        \"key_1\": \"http://BODHSUrcXqFCGplOxPqLNYMzbYGcHdnk.uvoihq.IUk5LVlOT.ONAAMXXMwdWffqRzlFFs7\"\n      },\n      \"platforms\": [\n        \"string\",\n        \"string\"\n      ],\n      \"standards\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "73fd4fe3-169d-4c30-bb30-3fe524e82f57",
+      "name": "Chains",
+      "description": {
+        "content": "Blockchain chains registered under CASA namespaces.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "aa7a4323-61ca-426f-b05b-47dd81e3ea98",
+          "name": "List chains",
+          "request": {
+            "name": "List chains",
+            "description": {
+              "content": "Returns blockchain chains registered under CASA namespaces.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "chains"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "projectId",
+                  "value": "<string>",
+                  "description": "(Required) Reown project ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "testnets",
+                  "value": "<boolean>",
+                  "description": "Include test networks in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "namespaces",
+                  "value": "<string>",
+                  "description": "Comma-separated CASA namespaces to filter by (e.g. eip155,solana)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3ffb52c0-c9aa-4772-94c3-521b1f7b5347",
+              "name": "A list of chains.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "chains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "projectId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "testnets",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "namespaces",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "projectId",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"chains\": [\n    {\n      \"id\": \"string\",\n      \"namespace\": \"string\",\n      \"name\": \"string\",\n      \"testnet\": false\n    },\n    {\n      \"id\": \"string\",\n      \"namespace\": \"string\",\n      \"name\": \"string\",\n      \"testnet\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "f76db168-2154-4120-b880-af17eaeacab0",
+      "name": "Logos",
+      "description": {
+        "content": "Logo image assets for listings.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e1417888-2edd-480b-b9b5-4d2503a67365",
+          "name": "Get a logo image",
+          "request": {
+            "name": "Get a logo image",
+            "description": {
+              "content": "Returns the image source of the logo for `image_id` sized according\nto `size`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "logo",
+                ":size",
+                ":image_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "projectId",
+                  "value": "<string>",
+                  "description": "(Required) Reown project ID."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "size",
+                  "description": "(Required) Size of the logo to return."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "image_id",
+                  "description": "(Required) Identifier of the image to return."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "image/png"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8f031519-3662-4ba6-9b9b-e090dc60f287",
+              "name": "Logo image.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "logo",
+                    ":size",
+                    ":image_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "projectId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "projectId",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "size",
+                      "description": "(Required) Size of the logo to return."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "image_id",
+                      "description": "(Required) Identifier of the image to return."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "image/png"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "image/png"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://explorer-api.walletconnect.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "projectId"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "39c718bc-aa54-411e-919c-0715a42a33f4",
+    "name": "Reown Cloud Explorer API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Reown (formerly WalletConnect) Cloud Explorer API exposes the public\ndirectory of WalletGuide-approved wallets, dApps, hybrid entries, and\nchains backing the Reown ecosystem, plus logo assets for these listings.\nAll endpoints require a `projectId` query parameter issued from the\nReown Dashboard at https://dashboard.reown.com.\n\nOnly the Cloud Explorer surface is modeled here. See the documentation\nfor related Reown surfaces including Notify, Blockchain RPC, and the\nSDK-mediated WalletConnect Relay.\n\n\nContact Support:\n Name: Reown Documentation",
+      "type": "text/plain"
+    }
+  }
+}

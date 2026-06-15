@@ -1,0 +1,372 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Reown Cloud Explorer API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "projectId",
+      "value": "{{projectId}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Listings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List wallets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://explorer-api.walletconnect.com/v3/wallets",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "query",
+                "description": "Reown project ID."
+              },
+              {
+                "name": "entries",
+                "value": "",
+                "type": "query",
+                "description": "Number of entries per page."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Free-text search term."
+              },
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of listing identifiers to filter by."
+              },
+              {
+                "name": "chains",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated CAIP-2 chain identifiers (e.g. eip155:1)."
+              },
+              {
+                "name": "platforms",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated platforms (e.g. ios,android,web)."
+              },
+              {
+                "name": "sdks",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated SDKs to filter by."
+              },
+              {
+                "name": "standards",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated supported standards."
+              }
+            ]
+          },
+          "docs": "Returns wallet listings from the Cloud Explorer directory."
+        },
+        {
+          "info": {
+            "name": "List dApps",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://explorer-api.walletconnect.com/v3/dapps",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "query",
+                "description": "Reown project ID."
+              },
+              {
+                "name": "entries",
+                "value": "",
+                "type": "query",
+                "description": "Number of entries per page."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Free-text search term."
+              },
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of listing identifiers to filter by."
+              },
+              {
+                "name": "chains",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated CAIP-2 chain identifiers (e.g. eip155:1)."
+              },
+              {
+                "name": "platforms",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated platforms (e.g. ios,android,web)."
+              },
+              {
+                "name": "sdks",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated SDKs to filter by."
+              },
+              {
+                "name": "standards",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated supported standards."
+              }
+            ]
+          },
+          "docs": "Returns dApp listings from the Cloud Explorer directory."
+        },
+        {
+          "info": {
+            "name": "List hybrid entries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://explorer-api.walletconnect.com/v3/hybrid",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "query",
+                "description": "Reown project ID."
+              },
+              {
+                "name": "entries",
+                "value": "",
+                "type": "query",
+                "description": "Number of entries per page."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Free-text search term."
+              },
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of listing identifiers to filter by."
+              },
+              {
+                "name": "chains",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated CAIP-2 chain identifiers (e.g. eip155:1)."
+              },
+              {
+                "name": "platforms",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated platforms (e.g. ios,android,web)."
+              },
+              {
+                "name": "sdks",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated SDKs to filter by."
+              },
+              {
+                "name": "standards",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated supported standards."
+              }
+            ]
+          },
+          "docs": "Returns hybrid listings (entries that are both wallets and dApps)."
+        },
+        {
+          "info": {
+            "name": "List all entries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://explorer-api.walletconnect.com/v3/all",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "query",
+                "description": "Reown project ID."
+              },
+              {
+                "name": "entries",
+                "value": "",
+                "type": "query",
+                "description": "Number of entries per page."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Free-text search term."
+              },
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of listing identifiers to filter by."
+              },
+              {
+                "name": "chains",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated CAIP-2 chain identifiers (e.g. eip155:1)."
+              },
+              {
+                "name": "platforms",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated platforms (e.g. ios,android,web)."
+              },
+              {
+                "name": "sdks",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated SDKs to filter by."
+              },
+              {
+                "name": "standards",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated supported standards."
+              }
+            ]
+          },
+          "docs": "Returns all entries (wallets, dApps, and hybrids) listed in the Cloud Explorer."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Chains",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List chains",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://explorer-api.walletconnect.com/v3/chains",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "query",
+                "description": "Reown project ID."
+              },
+              {
+                "name": "testnets",
+                "value": "",
+                "type": "query",
+                "description": "Include test networks in the response."
+              },
+              {
+                "name": "namespaces",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated CASA namespaces to filter by (e.g. eip155,solana)."
+              }
+            ]
+          },
+          "docs": "Returns blockchain chains registered under CASA namespaces."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Logos",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a logo image",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://explorer-api.walletconnect.com/v3/logo/:size/:image_id",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "query",
+                "description": "Reown project ID."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "path",
+                "description": "Size of the logo to return."
+              },
+              {
+                "name": "image_id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the image to return."
+              }
+            ]
+          },
+          "docs": "Returns the image source of the logo for `image_id` sized according\nto `size`.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
