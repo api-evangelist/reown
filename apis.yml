@@ -7,7 +7,7 @@ description: Reown (formerly WalletConnect) provides Web3 connection infrastruct
   the Reown Cloud Explorer API (dApp/wallet directory), Push Notifications, and Multi-chain
   RPC. The WalletConnect protocol itself is SDK-mediated; Reown also exposes REST
   APIs for the Cloud Explorer.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Web3
   - Wallets
