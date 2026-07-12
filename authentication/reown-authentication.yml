@@ -1,0 +1,19 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/reown-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - query
+schemes:
+- name: projectIdAuth
+  type: apiKey
+  in: query
+  parameter: projectId
+  description: |-
+    Reown project ID from the Reown Dashboard at
+    https://dashboard.reown.com. Passed as a `projectId` query parameter
+    on every request.
+  sources:
+  - openapi/reown-openapi.yml

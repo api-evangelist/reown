@@ -71,6 +71,12 @@ apis:
     - type: AsyncAPI
       url: asyncapi/reown-asyncapi.yml
 common:
+  - type: VulnerabilityDisclosure
+    url: security/reown-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/reown-domain-security.yml
+  - type: Authentication
+    url: authentication/reown-authentication.yml
   - type: GitHubOrganization
     url: https://github.com/reown-com
   - type: LinkedIn
@@ -85,6 +91,8 @@ common:
     url: finops/reown-finops.yml
   - type: LlmsText
     url: https://docs.reown.com/llms.txt
+  - url: https://reown.com/blog
+    type: Blog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
