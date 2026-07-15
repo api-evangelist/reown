@@ -71,6 +71,8 @@ apis:
     - type: AsyncAPI
       url: asyncapi/reown-asyncapi.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/reown-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/reown-vulnerability-disclosure.yml
   - type: DomainSecurity
