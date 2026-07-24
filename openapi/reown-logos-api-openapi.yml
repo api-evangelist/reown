@@ -1,0 +1,101 @@
+openapi: 3.1.0
+info:
+  title: Reown Cloud Explorer Chains Logos API
+  description: 'The Reown (formerly WalletConnect) Cloud Explorer API exposes the public
+
+    directory of WalletGuide-approved wallets, dApps, hybrid entries, and
+
+    chains backing the Reown ecosystem, plus logo assets for these listings.
+
+    All endpoints require a `projectId` query parameter issued from the
+
+    Reown Dashboard at https://dashboard.reown.com.
+
+
+    Only the Cloud Explorer surface is modeled here. See the documentation
+
+    for related Reown surfaces including Notify, Blockchain RPC, and the
+
+    SDK-mediated WalletConnect Relay.
+
+    '
+  version: 1.0.0
+  contact:
+    name: Reown Documentation
+    url: https://docs.reown.com/cloud/explorer
+  license:
+    name: Reown Proprietary
+servers:
+- url: https://explorer-api.walletconnect.com
+  description: Reown Cloud Explorer production server
+security:
+- projectIdAuth: []
+tags:
+- name: Logos
+  description: Logo image assets for listings.
+paths:
+  /v3/logo/{size}/{image_id}:
+    get:
+      tags:
+      - Logos
+      summary: Get a logo image
+      description: 'Returns the image source of the logo for `image_id` sized according
+
+        to `size`.
+
+        '
+      operationId: getLogo
+      parameters:
+      - $ref: '#/components/parameters/ProjectId'
+      - name: size
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - sm
+          - md
+          - lg
+        description: Size of the logo to return.
+      - name: image_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Identifier of the image to return.
+      responses:
+        '200':
+          description: Logo image.
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+components:
+  parameters:
+    ProjectId:
+      name: projectId
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Reown project ID.
+  securitySchemes:
+    projectIdAuth:
+      type: apiKey
+      in: query
+      name: projectId
+      description: 'Reown project ID from the Reown Dashboard at
+
+        https://dashboard.reown.com. Passed as a `projectId` query parameter
+
+        on every request.
+
+        '
+externalDocs:
+  description: Reown Cloud Explorer documentation
+  url: https://docs.reown.com/cloud/explorer

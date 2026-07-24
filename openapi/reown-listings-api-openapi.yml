@@ -1,0 +1,260 @@
+openapi: 3.1.0
+info:
+  title: Reown Cloud Explorer Chains Listings API
+  description: 'The Reown (formerly WalletConnect) Cloud Explorer API exposes the public
+
+    directory of WalletGuide-approved wallets, dApps, hybrid entries, and
+
+    chains backing the Reown ecosystem, plus logo assets for these listings.
+
+    All endpoints require a `projectId` query parameter issued from the
+
+    Reown Dashboard at https://dashboard.reown.com.
+
+
+    Only the Cloud Explorer surface is modeled here. See the documentation
+
+    for related Reown surfaces including Notify, Blockchain RPC, and the
+
+    SDK-mediated WalletConnect Relay.
+
+    '
+  version: 1.0.0
+  contact:
+    name: Reown Documentation
+    url: https://docs.reown.com/cloud/explorer
+  license:
+    name: Reown Proprietary
+servers:
+- url: https://explorer-api.walletconnect.com
+  description: Reown Cloud Explorer production server
+security:
+- projectIdAuth: []
+tags:
+- name: Listings
+  description: Wallet, dApp, and hybrid directory listings.
+paths:
+  /v3/wallets:
+    get:
+      tags:
+      - Listings
+      summary: List wallets
+      description: Returns wallet listings from the Cloud Explorer directory.
+      operationId: listWallets
+      parameters:
+      - $ref: '#/components/parameters/ProjectId'
+      - $ref: '#/components/parameters/Entries'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/Search'
+      - $ref: '#/components/parameters/Ids'
+      - $ref: '#/components/parameters/Chains'
+      - $ref: '#/components/parameters/Platforms'
+      - $ref: '#/components/parameters/Sdks'
+      - $ref: '#/components/parameters/Standards'
+      responses:
+        '200':
+          description: A page of wallet listings.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListingsResponse'
+  /v3/dapps:
+    get:
+      tags:
+      - Listings
+      summary: List dApps
+      description: Returns dApp listings from the Cloud Explorer directory.
+      operationId: listDapps
+      parameters:
+      - $ref: '#/components/parameters/ProjectId'
+      - $ref: '#/components/parameters/Entries'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/Search'
+      - $ref: '#/components/parameters/Ids'
+      - $ref: '#/components/parameters/Chains'
+      - $ref: '#/components/parameters/Platforms'
+      - $ref: '#/components/parameters/Sdks'
+      - $ref: '#/components/parameters/Standards'
+      responses:
+        '200':
+          description: A page of dApp listings.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListingsResponse'
+  /v3/hybrid:
+    get:
+      tags:
+      - Listings
+      summary: List hybrid entries
+      description: Returns hybrid listings (entries that are both wallets and dApps).
+      operationId: listHybrid
+      parameters:
+      - $ref: '#/components/parameters/ProjectId'
+      - $ref: '#/components/parameters/Entries'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/Search'
+      - $ref: '#/components/parameters/Ids'
+      - $ref: '#/components/parameters/Chains'
+      - $ref: '#/components/parameters/Platforms'
+      - $ref: '#/components/parameters/Sdks'
+      - $ref: '#/components/parameters/Standards'
+      responses:
+        '200':
+          description: A page of hybrid listings.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListingsResponse'
+  /v3/all:
+    get:
+      tags:
+      - Listings
+      summary: List all entries
+      description: Returns all entries (wallets, dApps, and hybrids) listed in the Cloud Explorer.
+      operationId: listAll
+      parameters:
+      - $ref: '#/components/parameters/ProjectId'
+      - $ref: '#/components/parameters/Entries'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/Search'
+      - $ref: '#/components/parameters/Ids'
+      - $ref: '#/components/parameters/Chains'
+      - $ref: '#/components/parameters/Platforms'
+      - $ref: '#/components/parameters/Sdks'
+      - $ref: '#/components/parameters/Standards'
+      responses:
+        '200':
+          description: A page of mixed listings.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListingsResponse'
+components:
+  parameters:
+    Ids:
+      name: ids
+      in: query
+      schema:
+        type: string
+      description: Comma-separated list of listing identifiers to filter by.
+    Platforms:
+      name: platforms
+      in: query
+      schema:
+        type: string
+      description: Comma-separated platforms (e.g. ios,android,web).
+    Page:
+      name: page
+      in: query
+      schema:
+        type: integer
+        default: 1
+      description: Page number.
+    Entries:
+      name: entries
+      in: query
+      schema:
+        type: integer
+        default: 100
+      description: Number of entries per page.
+    Standards:
+      name: standards
+      in: query
+      schema:
+        type: string
+      description: Comma-separated supported standards.
+    Chains:
+      name: chains
+      in: query
+      schema:
+        type: string
+      description: Comma-separated CAIP-2 chain identifiers (e.g. eip155:1).
+    Sdks:
+      name: sdks
+      in: query
+      schema:
+        type: string
+      description: Comma-separated SDKs to filter by.
+    ProjectId:
+      name: projectId
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Reown project ID.
+    Search:
+      name: search
+      in: query
+      schema:
+        type: string
+      description: Free-text search term.
+  schemas:
+    ListingsResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Total number of matching listings.
+        listings:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Listing'
+    Listing:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        slug:
+          type: string
+        description:
+          type: string
+        homepage:
+          type: string
+          format: uri
+        chains:
+          type: array
+          items:
+            type: string
+        versions:
+          type: array
+          items:
+            type: string
+        sdks:
+          type: array
+          items:
+            type: string
+        app_type:
+          type: string
+        image_id:
+          type: string
+        image_url:
+          type: object
+          additionalProperties:
+            type: string
+            format: uri
+        platforms:
+          type: array
+          items:
+            type: string
+        standards:
+          type: array
+          items:
+            type: string
+  securitySchemes:
+    projectIdAuth:
+      type: apiKey
+      in: query
+      name: projectId
+      description: 'Reown project ID from the Reown Dashboard at
+
+        https://dashboard.reown.com. Passed as a `projectId` query parameter
+
+        on every request.
+
+        '
+externalDocs:
+  description: Reown Cloud Explorer documentation
+  url: https://docs.reown.com/cloud/explorer
