@@ -1,0 +1,18 @@
+{
+  "provider": "reown",
+  "sources": [
+    "reown-chains-api-openapi.yml",
+    "reown-listings-api-openapi.yml",
+    "reown-logos-api-openapi.yml"
+  ],
+  "outputs": [
+    "reown-chains-api-openapi.yml",
+    "reown-listings-api-openapi.yml",
+    "reown-logos-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
