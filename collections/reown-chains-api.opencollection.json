@@ -1,0 +1,57 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Reown Cloud Explorer Chains API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "projectId",
+      "value": "{{projectId}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Chains",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List chains",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://explorer-api.walletconnect.com/v3/chains",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "query",
+                "description": "Reown project ID."
+              },
+              {
+                "name": "testnets",
+                "value": "",
+                "type": "query",
+                "description": "Include test networks in the response."
+              },
+              {
+                "name": "namespaces",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated CASA namespaces to filter by (e.g. eip155,solana)."
+              }
+            ]
+          },
+          "docs": "Returns blockchain chains registered under CASA namespaces."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

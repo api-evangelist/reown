@@ -1,0 +1,57 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Reown Cloud Explorer Chains Logos API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "projectId",
+      "value": "{{projectId}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Logos",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a logo image",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://explorer-api.walletconnect.com/v3/logo/:size/:image_id",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "query",
+                "description": "Reown project ID."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "path",
+                "description": "Size of the logo to return."
+              },
+              {
+                "name": "image_id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the image to return."
+              }
+            ]
+          },
+          "docs": "Returns the image source of the logo for `image_id` sized according\nto `size`.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

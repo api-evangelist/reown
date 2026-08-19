@@ -1,0 +1,157 @@
+{
+  "item": [
+    {
+      "id": "16c49814-4b1c-4492-92e0-b2f59f9f988f",
+      "name": "Chains",
+      "description": {
+        "content": "Blockchain chains registered under CASA namespaces.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b5a6502f-aec8-458e-84a3-74553c4abd2c",
+          "name": "List chains",
+          "request": {
+            "name": "List chains",
+            "description": {
+              "content": "Returns blockchain chains registered under CASA namespaces.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "chains"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "projectId",
+                  "value": "<string>",
+                  "description": "(Required) Reown project ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "testnets",
+                  "value": "<boolean>",
+                  "description": "Include test networks in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "namespaces",
+                  "value": "<string>",
+                  "description": "Comma-separated CASA namespaces to filter by (e.g. eip155,solana)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "39a15200-4d07-45ac-8f60-f6714ae9e162",
+              "name": "A list of chains.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "chains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "projectId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "testnets",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "namespaces",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "projectId",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"chains\": [\n    {\n      \"id\": \"string\",\n      \"namespace\": \"string\",\n      \"name\": \"string\",\n      \"testnet\": true\n    },\n    {\n      \"id\": \"string\",\n      \"namespace\": \"string\",\n      \"name\": \"string\",\n      \"testnet\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://explorer-api.walletconnect.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "projectId"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b4f1c53a-8e94-49cb-87bc-bd5f20cf56a2",
+    "name": "Reown Cloud Explorer Chains API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Reown (formerly WalletConnect) Cloud Explorer API exposes the public\ndirectory of WalletGuide-approved wallets, dApps, hybrid entries, and\nchains backing the Reown ecosystem, plus logo assets for these listings.\nAll endpoints require a `projectId` query parameter issued from the\nReown Dashboard at https://dashboard.reown.com.\n\nOnly the Cloud Explorer surface is modeled here. See the documentation\nfor related Reown surfaces including Notify, Blockchain RPC, and the\nSDK-mediated WalletConnect Relay.\n\n\nContact Support:\n Name: Reown Documentation",
+      "type": "text/plain"
+    }
+  }
+}
