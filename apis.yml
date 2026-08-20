@@ -65,6 +65,9 @@ apis:
   baseURL: https://rpc.walletconnect.com/v1
   tags:
   - JSON-RPC
+  - Multi-Chain
+  tags_raw:
+  - JSON-RPC
   - Multi-chain
   properties:
   - type: Documentation
