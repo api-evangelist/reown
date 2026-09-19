@@ -126,6 +126,8 @@ apis:
   humanURL: https://docs.reown.com/cloud/explorer
   baseURL: https://api.web3modal.org/v3
   tags:
+  - Logo
+  tags_raw:
   - Logos
   properties:
   - type: OpenAPI
