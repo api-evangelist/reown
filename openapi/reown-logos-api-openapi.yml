@@ -1,24 +1,11 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Reown Cloud Explorer Chains Logos API
+  title: Reown Cloud Explorer Logos API
   description: 'The Reown (formerly WalletConnect) Cloud Explorer API exposes the public
 
     directory of WalletGuide-approved wallets, dApps, hybrid entries, and
 
-    chains backing the Reown ecosystem, plus logo assets for these listings.
-
-    All endpoints require a `projectId` query parameter issued from the
-
-    Reown Dashboard at https://dashboard.reown.com.
-
-
-    Only the Cloud Explorer surface is modeled here. See the documentation
-
-    for related Reown surfaces including Notify, Blockchain RPC, and the
-
-    SDK-mediated WalletConnect Relay.
-
-    '
+    chains backing the Reown ecosystem, plus logo assets for these listings.'
   version: 1.0.0
   contact:
     name: Reown Documentation
@@ -41,9 +28,7 @@ paths:
       summary: Get a logo image
       description: 'Returns the image source of the logo for `image_id` sized according
 
-        to `size`.
-
-        '
+        to `size`.'
       operationId: getLogo
       parameters:
       - $ref: '#/components/parameters/ProjectId'
