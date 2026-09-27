@@ -53,6 +53,14 @@ paths:
                     items:
                       $ref: '#/components/schemas/Chain'
 components:
+  parameters:
+    ProjectId:
+      name: projectId
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Reown project ID.
   schemas:
     Chain:
       type: object
@@ -66,14 +74,6 @@ components:
           type: string
         testnet:
           type: boolean
-  parameters:
-    ProjectId:
-      name: projectId
-      in: query
-      required: true
-      schema:
-        type: string
-      description: Reown project ID.
   securitySchemes:
     projectIdAuth:
       type: apiKey

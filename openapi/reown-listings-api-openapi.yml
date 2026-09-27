@@ -118,17 +118,65 @@ paths:
               schema:
                 $ref: '#/components/schemas/ListingsResponse'
 components:
+  parameters:
+    Standards:
+      name: standards
+      in: query
+      schema:
+        type: string
+      description: Comma-separated supported standards.
+    Chains:
+      name: chains
+      in: query
+      schema:
+        type: string
+      description: Comma-separated CAIP-2 chain identifiers (e.g. eip155:1).
+    Sdks:
+      name: sdks
+      in: query
+      schema:
+        type: string
+      description: Comma-separated SDKs to filter by.
+    Platforms:
+      name: platforms
+      in: query
+      schema:
+        type: string
+      description: Comma-separated platforms (e.g. ios,android,web).
+    Search:
+      name: search
+      in: query
+      schema:
+        type: string
+      description: Free-text search term.
+    ProjectId:
+      name: projectId
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Reown project ID.
+    Ids:
+      name: ids
+      in: query
+      schema:
+        type: string
+      description: Comma-separated list of listing identifiers to filter by.
+    Page:
+      name: page
+      in: query
+      schema:
+        type: integer
+        default: 1
+      description: Page number.
+    Entries:
+      name: entries
+      in: query
+      schema:
+        type: integer
+        default: 100
+      description: Number of entries per page.
   schemas:
-    ListingsResponse:
-      type: object
-      properties:
-        count:
-          type: integer
-          description: Total number of matching listings.
-        listings:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/Listing'
     Listing:
       type: object
       properties:
@@ -172,64 +220,16 @@ components:
           type: array
           items:
             type: string
-  parameters:
-    Entries:
-      name: entries
-      in: query
-      schema:
-        type: integer
-        default: 100
-      description: Number of entries per page.
-    Platforms:
-      name: platforms
-      in: query
-      schema:
-        type: string
-      description: Comma-separated platforms (e.g. ios,android,web).
-    Standards:
-      name: standards
-      in: query
-      schema:
-        type: string
-      description: Comma-separated supported standards.
-    Sdks:
-      name: sdks
-      in: query
-      schema:
-        type: string
-      description: Comma-separated SDKs to filter by.
-    Page:
-      name: page
-      in: query
-      schema:
-        type: integer
-        default: 1
-      description: Page number.
-    ProjectId:
-      name: projectId
-      in: query
-      required: true
-      schema:
-        type: string
-      description: Reown project ID.
-    Chains:
-      name: chains
-      in: query
-      schema:
-        type: string
-      description: Comma-separated CAIP-2 chain identifiers (e.g. eip155:1).
-    Ids:
-      name: ids
-      in: query
-      schema:
-        type: string
-      description: Comma-separated list of listing identifiers to filter by.
-    Search:
-      name: search
-      in: query
-      schema:
-        type: string
-      description: Free-text search term.
+    ListingsResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Total number of matching listings.
+        listings:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Listing'
   securitySchemes:
     projectIdAuth:
       type: apiKey
