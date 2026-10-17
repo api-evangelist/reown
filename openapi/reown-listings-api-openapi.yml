@@ -119,30 +119,6 @@ paths:
                 $ref: '#/components/schemas/ListingsResponse'
 components:
   parameters:
-    Sdks:
-      name: sdks
-      in: query
-      schema:
-        type: string
-      description: Comma-separated SDKs to filter by.
-    Platforms:
-      name: platforms
-      in: query
-      schema:
-        type: string
-      description: Comma-separated platforms (e.g. ios,android,web).
-    Search:
-      name: search
-      in: query
-      schema:
-        type: string
-      description: Free-text search term.
-    Chains:
-      name: chains
-      in: query
-      schema:
-        type: string
-      description: Comma-separated CAIP-2 chain identifiers (e.g. eip155:1).
     ProjectId:
       name: projectId
       in: query
@@ -150,6 +126,24 @@ components:
       schema:
         type: string
       description: Reown project ID.
+    Ids:
+      name: ids
+      in: query
+      schema:
+        type: string
+      description: Comma-separated list of listing identifiers to filter by.
+    Chains:
+      name: chains
+      in: query
+      schema:
+        type: string
+      description: Comma-separated CAIP-2 chain identifiers (e.g. eip155:1).
+    Sdks:
+      name: sdks
+      in: query
+      schema:
+        type: string
+      description: Comma-separated SDKs to filter by.
     Entries:
       name: entries
       in: query
@@ -157,12 +151,6 @@ components:
         type: integer
         default: 100
       description: Number of entries per page.
-    Ids:
-      name: ids
-      in: query
-      schema:
-        type: string
-      description: Comma-separated list of listing identifiers to filter by.
     Page:
       name: page
       in: query
@@ -176,6 +164,18 @@ components:
       schema:
         type: string
       description: Comma-separated supported standards.
+    Search:
+      name: search
+      in: query
+      schema:
+        type: string
+      description: Free-text search term.
+    Platforms:
+      name: platforms
+      in: query
+      schema:
+        type: string
+      description: Comma-separated platforms (e.g. ios,android,web).
   schemas:
     ListingsResponse:
       type: object
