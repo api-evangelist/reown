@@ -1,4 +1,4 @@
-# Reown (reown)
+# Reown
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,107 +66,142 @@
 
 Reown (formerly WalletConnect) provides Web3 connection infrastructure including AppKit (login + wallet integration UX), WalletConnect SDK (wallet-side), the Reown Cloud Explorer API (dApp/wallet directory), Push Notifications, and Multi-chain RPC. The WalletConnect protocol itself is SDK-mediated; Reown also exposes REST APIs for the Cloud Explorer.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/reown/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/reown/refs/heads/main/apis.yml)
+**Areas:** Web3 · Wallets · WalletConnect · AppKit · RPC · Real-Time
 
-## Tags
+## Reown on APIs.io
 
-- Web3
-- Wallets
-- WalletConnect
-- AppKit
-- RPC
+Everything profiled for Reown is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/reown/](https://apis.io/providers/reown/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (7)
 
-- **Created:** 2026-05-08
-- **Modified:** 2026-05-08
+- [Reown Cloud Explorer API](https://apis.io/apis/reown/explorer-api/) — REST API to retrieve listings of WalletGuide-approved wallets, dApps, hybrid entries, and chains, plus logo assets. Filter by chain, platform, SDK,…
+- [Reown Notify (Push) API](https://apis.io/apis/reown/notify-api/) — REST API for sending wallet push notifications via the Reown Notify protocol, plus subject/topic management.
+- [Reown Blockchain API](https://apis.io/apis/reown/blockchain-api/) — Multi-chain JSON-RPC over HTTPS used by AppKit and partners; provides on-chain reads, gas, swaps, and onramp helpers.
+- [WalletConnect Relay (SDK-mediated)](https://apis.io/apis/reown/walletconnect-protocol/) — WalletConnect v2 relay network for end-to-end encrypted JSON-RPC pairing between dApps and wallets. Accessed through SDK clients only; not a direct REST…
+- [Reown Chains API](https://apis.io/apis/reown/reown-chains-api/) — Blockchain chains registered under CASA namespaces.
+- [Reown Listings API](https://apis.io/apis/reown/reown-listings-api/) — Wallet, dApp, and hybrid directory listings.
+- [Reown Logos API](https://apis.io/apis/reown/reown-logos-api/) — Logo image assets for listings.
 
-## APIs
+### Published properties
 
-### Reown Cloud Explorer API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-REST API to retrieve listings of WalletGuide-approved wallets, dApps, hybrid entries, and chains, plus logo assets. Filter by chain, platform, SDK, standard, or search term.
+#### AsyncAPI (1)
 
-- **Human URL:** [https://docs.reown.com/cloud/explorer](https://docs.reown.com/cloud/explorer)
-- **Base URL:** `https://api.web3modal.org/v3`
+Event-driven and webhook contracts.
 
-#### Tags
+- [Reown / WalletConnect v2 Relay](https://apis.io/asyncapis/reown/reown-asyncapi/)
 
-- REST
-- Directory
+#### Event channels (1)
 
-#### Properties
+Individual events and webhooks the provider emits.
 
-- [Documentation](https://docs.reown.com/cloud/explorer)
-- [Postman Collection](collections/reown.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/reown.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [/](https://apis.io/channels/reown/untitled/)
 
-### Reown Notify (Push) API
+#### Agentic access (1)
 
-REST API for sending wallet push notifications via the Reown Notify protocol, plus subject/topic management.
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- **Human URL:** [https://docs.reown.com/cloud/notify-api](https://docs.reown.com/cloud/notify-api)
-- **Base URL:** `https://notify.walletconnect.com`
+- [Reown Agentic Access](https://apis.io/agentic-access/reown/reown-agentic-access/)
 
-#### Tags
+#### Collections (4)
 
-- REST
-- Push
+Postman and Open Collection request collections.
 
-#### Properties
+- [Reown Cloud Explorer API](https://apis.io/collections/reown/open-reown/)
+- [Reown Cloud Explorer Chains API](https://apis.io/collections/reown/open-reown-chains-api/)
+- [Reown Cloud Explorer Chains Listings API](https://apis.io/collections/reown/open-reown-listings-api/)
+- [Reown Cloud Explorer Chains Logos API](https://apis.io/collections/reown/open-reown-logos-api/)
 
-- [Documentation](https://docs.reown.com/cloud/notify-api)
-- [Postman Collection](collections/reown.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/reown.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Governance rules (1)
 
-### Reown Blockchain API
+Spectral rulesets for the provider's contracts.
 
-Multi-chain JSON-RPC over HTTPS used by AppKit and partners; provides on-chain reads, gas, swaps, and onramp helpers.
+- [Reown — asyncapi rules](https://apis.io/rules/reown/reown-asyncapi-spectral-rules/)
 
-- **Human URL:** [https://docs.reown.com/cloud/blockchain-api](https://docs.reown.com/cloud/blockchain-api)
-- **Base URL:** `https://rpc.walletconnect.com/v1`
+#### Security (3)
 
-#### Tags
+Authentication, trust centre, and vulnerability disclosure.
 
-- JSON-RPC
-- Multi-chain
+- [Reown Authentication](https://apis.io/security/reown/reown-authentication/)
+- [Reown Domain Security](https://apis.io/security/reown/reown-domain-security/)
+- [Reown Vulnerability Disclosure](https://apis.io/security/reown/reown-vulnerability-disclosure/)
 
-#### Properties
+#### Plans and pricing (1)
 
-- [Documentation](https://docs.reown.com/cloud/blockchain-api)
-- [Postman Collection](collections/reown.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/reown.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Published plans, tiers and prices.
 
-### WalletConnect Relay (SDK-mediated)
+- [Reown Plans Pricing](https://apis.io/plans/reown/reown-plans-pricing/)
 
-WalletConnect v2 relay network for end-to-end encrypted JSON-RPC pairing between dApps and wallets. Accessed through SDK clients only; not a direct REST surface.
+#### Rate limits (1)
 
-- **Human URL:** [https://docs.reown.com/walletkit/overview](https://docs.reown.com/walletkit/overview)
-- **Base URL:** `wss://relay.walletconnect.com`
+Published request limits.
 
-#### Tags
+- [Reown Rate Limits](https://apis.io/rate-limits/reown/reown-rate-limits/)
 
-- WebSocket
-- Relay
+#### FinOps (1)
 
-#### Properties
+What the API costs to run, by operation.
 
-- [Documentation](https://docs.reown.com/walletkit/overview)
-- [AsyncAPI](asyncapi/reown-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
-- [Postman Collection](collections/reown.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/reown.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Reown Finops](https://apis.io/finops/reown/reown-finops/)
 
-## Common Properties
+## Where to find this API
 
-- [GitHub Organization](https://github.com/reown-com)
-- [LinkedIn](https://www.linkedin.com/company/re-own)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://reown.com/)
-- [Plans](plans/reown-plans-pricing.yml)
-- [Rate Limits](rate-limits/reown-rate-limits.yml)
-- [Fin Ops](finops/reown-finops.yml)
-- [L L Ms Txt](https://docs.reown.com/llms.txt)
+- [Blog](https://reown.com/blog)
+- [GitHub](https://github.com/reown-com)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 29.4** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 55.5 |
+| Contract governance | 11.4 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 23.8 |
+| Access clarity | 7.9 |
+
+**Agent readiness 22.0** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | derived (partial credit) |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.1** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/reown/](https://apis.io/providers/reown/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Reown: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/reown/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
